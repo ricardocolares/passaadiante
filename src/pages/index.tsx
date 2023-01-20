@@ -1,6 +1,4 @@
 import PostCard from "@/components/PostCard";
-import { Inter } from "@next/font/google";
-import styles from "./page.module.css";
 
 export default function Home({ data }: any) {
   const renderPostList = () => {
@@ -9,17 +7,18 @@ export default function Home({ data }: any) {
         <PostCard
           key={post.id}
           title={post.title}
-          description={post.descriptiom}
+          author={post.author.name}
+          description={post.content[0].children[0].text}
         />
       );
     });
     return res;
   };
   return (
-    <main>
+    <div className="md:container md:mx-auto">
       <h1 className="text-3xl font-bold underline">Ola, mundo</h1>
-      {renderPostList()}
-    </main>
+      <div className="flex flex-col items-center ...">{renderPostList()}</div>
+    </div>
   );
 }
 
